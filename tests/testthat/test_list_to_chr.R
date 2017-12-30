@@ -35,7 +35,6 @@ test_that("simplify works", {
     list_to_chr(list(1:3, 4:5), simplify_threshold = 3),
     "1->3|4;5"
   )
-  skip("to be corrected")
   expect_equal(
     list_to_chr(list(1, 2), simplify_threshold = 1),
     "1|2"
@@ -49,7 +48,10 @@ test_that("simplify works", {
     "1:3|4:5"
   )
   expect_warning(
-    list_to_chr(list(1:3, 4:5), simplify_sep = ":")
+    list_to_chr(list(1:3), simplify_sep = ":")
+  )
+  expect_error(
+    list_to_chr(list(1:3), simplify_threshold = -1)
   )
 })
 

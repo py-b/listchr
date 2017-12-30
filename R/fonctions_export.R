@@ -11,8 +11,8 @@
 #' @param x a list, whose lower level elements are atomic vectors.
 #' @param atom_sep separator for the elements of atomic vectors.
 #' @param list_sep separator for the elements of lists.
-#' @param simplify_threshold number of atomic elements from which
-#'   the character string is simplified (only first and last elements
+#' @param simplify_threshold non-negative number of atomic elements from
+#'   which the character string is simplified (only first and last elements
 #'   separated by a separator, "->" by default).
 #' @param simplify_sep a separator (one or several characters)
 #'   if the string has to be simplified.
@@ -30,8 +30,20 @@ list_to_chr <- function(x,
 
   if (is.null(x)) return(NA_character_)
 
+  if (is.infinite(simplify_threshold)) {
+    if (simplify_sep != "->")
+      warning(paste(
+        "Redefining \"simplify_sep\", but not \"simplify_threshold\".",
+        "Forgot to set \"simplify_threshold\" to a non-negative",
+        "integer value?"
+      ))
+  } else {
+    if (!is.integer(as.integer(simplify_threshold)) | simplify_threshold < 0)
+      stop("\"simplify_threshold\" must be a non-negative integer")
+  }
+
   if (is.atomic(x)) {
-    if (length(x) >= simplify_threshold) {
+    if (length(x) > 1 & length(x) >= simplify_threshold) {
       res <- paste0(x[1], simplify_sep, rev(x)[1])
     } else {
       res <- paste0(x, collapse = atom_sep)

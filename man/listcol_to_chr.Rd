@@ -14,8 +14,8 @@ listcol_to_chr(df, atom_sep = ";", list_sep = "|",
 
 \item{list_sep}{separator for the elements of lists.}
 
-\item{simplify_threshold}{number of atomic elements from which
-the character string is simplified (only first and last elements
+\item{simplify_threshold}{non-negative number of atomic elements from
+which the character string is simplified (only first and last elements
 separated by a separator, "->" by default).}
 
 \item{simplify_sep}{a separator (one or several characters)
