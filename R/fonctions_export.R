@@ -102,6 +102,9 @@ listcol_to_chr <- function(df,
 #'
 #' Convert a string into list, given separators.
 #'
+#' The function is vectorized hence \code{chr} can be
+#' a character vector with more than one element. Consequently
+#' the returned value is always a list (even of length 1).
 #' If all elements of the returned list are atomic,
 #' the list is simplified.
 #'
@@ -112,8 +115,8 @@ listcol_to_chr <- function(df,
 #' chr_to_list("1;2;3|a;b")
 #' chr_to_list("1;2;3")
 #' chr_to_list("1|2|3")
-#' chr_to_list(c("1;3", "2|4"))
-#' chr_to_list(c("1;3", "2;4"))
+#' chr_to_list(c("1;3", "2|4")) # vectorized usage
+#' chr_to_list(c("1;3", "2;4")) # simplification
 #' @export
 
 chr_to_list <- function(chr,
@@ -136,15 +139,17 @@ chr_to_list <- function(chr,
 }
 
 
-#' Separated character to list (for a data frame)
+#' Separated character to list-columns (for a data frame)
 #'
-#' Convert some columns of a data frame into list-columns,
+#' Convert the specified columns of a data frame into list-columns,
 #' given separators.
 #'
 #' @param df a data frame containing columns to transform into
 #'   list-columns.
 #' @param vars columns to transform (vector of names or indexes)
 #' @inheritParams list_to_chr
+#' @return A data frame. Columns specified in \code{vars} are
+#'   transformed into list-columns, other are unchanged.
 #' @examples
 #' df <-
 #'   data.frame(

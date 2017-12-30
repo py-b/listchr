@@ -20,6 +20,9 @@ A list (\code{NULL} if the string is empty or \code{NA}).
 Convert a string into list, given separators.
 }
 \details{
+The function is vectorized hence \code{chr} can be
+a character vector with more than one element. Consequently
+the returned value is always a list (even of length 1).
 If all elements of the returned list are atomic,
 the list is simplified.
 }
@@ -27,6 +30,6 @@ the list is simplified.
 chr_to_list("1;2;3|a;b")
 chr_to_list("1;2;3")
 chr_to_list("1|2|3")
-chr_to_list(c("1;3", "2|4"))
-chr_to_list(c("1;3", "2;4"))
+chr_to_list(c("1;3", "2|4")) # vectorized usage
+chr_to_list(c("1;3", "2;4")) # simplification
 }

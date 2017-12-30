@@ -2,7 +2,7 @@
 % Please edit documentation in R/fonctions_export.R
 \name{chr_to_listcol}
 \alias{chr_to_listcol}
-\title{Separated character to list (for a data frame)}
+\title{Separated character to list-columns (for a data frame)}
 \usage{
 chr_to_listcol(df, vars, atom_sep = ";", list_sep = "|")
 }
@@ -16,8 +16,12 @@ list-columns.}
 
 \item{list_sep}{separator for the elements of lists.}
 }
+\value{
+A data frame. Columns specified in \code{vars} are
+  transformed into list-columns, other are unchanged.
+}
 \description{
-Convert some columns of a data frame into list-columns,
+Convert the specified columns of a data frame into list-columns,
 given separators.
 }
 \examples{
