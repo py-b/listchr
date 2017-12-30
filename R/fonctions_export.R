@@ -13,8 +13,8 @@
 #' @param list_sep separator for the elements of lists.
 #' @param simplify_threshold number of atomic elements from which
 #'   the character string is simplified (only first and last elements
-#'   separated by a symbol, "->" by default).
-#' @param simplify_symbol a symbol (one or several characters)
+#'   separated by a separator, "->" by default).
+#' @param simplify_sep a separator (one or several characters)
 #'   if the string has to be simplified.
 #' @return A string, the text representation of x.
 #' @examples
@@ -26,13 +26,13 @@ list_to_chr <- function(x,
                         atom_sep = ";",
                         list_sep = "|",
                         simplify_threshold = Inf,
-                        simplify_symbol = "->") {
+                        simplify_sep = "->") {
 
   if (is.null(x)) return(NA_character_)
 
   if (is.atomic(x)) {
     if (length(x) >= simplify_threshold) {
-      res <- paste0(x[1], simplify_symbol, rev(x)[1])
+      res <- paste0(x[1], simplify_sep, rev(x)[1])
     } else {
       res <- paste0(x, collapse = atom_sep)
     }
@@ -47,7 +47,8 @@ list_to_chr <- function(x,
         list_to_chr(
           x = ele,
           atom_sep = atom_sep,
-          simplify_threshold = simplify_threshold
+          simplify_threshold = simplify_threshold,
+          simplify_sep = simplify_sep
         ),
         sep = list_sep
       )
@@ -77,7 +78,7 @@ listcol_to_chr <- function(df,
                            atom_sep = ";",
                            list_sep = "|",
                            simplify_threshold = Inf,
-                           simplify_symbol = "->") {
+                           simplify_sep = "->") {
 
   df %>%
     dplyr::mutate_if(
@@ -87,10 +88,10 @@ listcol_to_chr <- function(df,
         vapply(
           list_to_chr,
           FUN.VALUE = character(1),
-          atom_sep,
-          list_sep,
-          simplify_threshold,
-          simplify_symbol
+          atom_sep = atom_sep,
+          list_sep = list_sep,
+          simplify_threshold = simplify_threshold,
+          simplify_sep = simplify_sep
         )
     }
   )

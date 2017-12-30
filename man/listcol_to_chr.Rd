@@ -5,7 +5,7 @@
 \title{List-columns to character (for a data frame)}
 \usage{
 listcol_to_chr(df, atom_sep = ";", list_sep = "|",
-  simplify_threshold = Inf, simplify_symbol = "->")
+  simplify_threshold = Inf, simplify_sep = "->")
 }
 \arguments{
 \item{df}{a data frame containing list-columns.}
@@ -16,9 +16,9 @@ listcol_to_chr(df, atom_sep = ";", list_sep = "|",
 
 \item{simplify_threshold}{number of atomic elements from which
 the character string is simplified (only first and last elements
-separated by a symbol, "->" by default).}
+separated by a separator, "->" by default).}
 
-\item{simplify_symbol}{a symbol (one or several characters)
+\item{simplify_sep}{a separator (one or several characters)
 if the string has to be simplified.}
 }
 \value{
