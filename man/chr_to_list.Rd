@@ -7,22 +7,21 @@
 chr_to_list(chr, atom_sep = ";", list_sep = "|")
 }
 \arguments{
-\item{chr}{chaîne de caractères à convertir.}
+\item{chr}{string to convert.}
 
-\item{atom_sep}{séparateur des éléments atomiques.}
+\item{atom_sep}{separator for the elements of atomic vectors.}
 
-\item{list_sep}{séparateur des éléments de la liste.}
+\item{list_sep}{separator for the elements of lists.}
 }
 \value{
-Une liste (NULL si la chaîne est vide ou NA).
+A list (\code{NULL} if the string is empty or \code{NA}).
 }
 \description{
-Convertit une chaîne de caractère en liste,
-selon des séparateurs définis.
+Convert a string into list, given separators.
 }
 \details{
-Si tous les éléments de la liste en sortie sont
-atomiques, la liste est simplifiée
+If all elements of the returned list are atomic,
+the list is simplified.
 }
 \examples{
 chr_to_list("1;2;3|a;b")

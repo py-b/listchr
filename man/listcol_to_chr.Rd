@@ -2,32 +2,31 @@
 % Please edit documentation in R/fonctions_export.R
 \name{listcol_to_chr}
 \alias{listcol_to_chr}
-\title{Simple list to character (for a data frame)}
+\title{List-columns to character (for a data frame)}
 \usage{
 listcol_to_chr(df, atom_sep = ";", list_sep = "|",
   simplify_threshold = Inf, simplify_symbol = "->")
 }
 \arguments{
-\item{df}{un data.frame contenant des colonnes-listes.}
+\item{df}{a data frame containing list-columns.}
 
-\item{atom_sep}{séparateur des éléments atomiques.}
+\item{atom_sep}{separator for the elements of atomic vectors.}
 
-\item{list_sep}{séparateur des éléments de la liste.}
+\item{list_sep}{separator for the elements of lists.}
 
-\item{simplify_threshold}{nombre d'éléments atomiques à partir duquel
-la chaîne de caractères est simplifiée (premier et dernier éléments
-séparés par un symbole, "->" par défaut).}
+\item{simplify_threshold}{number of atomic elements from which
+the character string is simplified (only first and last elements
+separated by a symbol, "->" by default).}
 
-\item{simplify_symbol}{chaîne de caractère, si la chaîne est simplifiée.}
+\item{simplify_symbol}{a symbol (one or several characters)
+if the string has to be simplified.}
 }
 \value{
-Un data.frame, les colonnes simples (atomiques) restent
-  inchangées, les colonnes-listes (recursives) sont transformées
-  en vecteurs de chaînes de caractères.
+A data frame. Simple columns (atomic) remain the same,
+  list-columns (recursive) are transformed into character vectors.
 }
 \description{
-Convertit toutes les colonnes-listes d'un data.frame en vecteurs
-de chaînes de caractères.
+Convert all list-columns of a data frame into character vectors.
 }
 \examples{
 df <- data.frame(x = 1:2)

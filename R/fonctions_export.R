@@ -1,21 +1,22 @@
 #' Simple list to character
 #'
-#' Donne une représentation textuelle d'une liste dont les éléments
-#' de plus bas niveau sont des vecteurs atomiques.
+#' Returns a text representation of a list, whose lower level
+#' elements are atomic vectors.
 #'
-#' La valeur retournée est toujours une chaine, même si la liste
-#' a plusieurs niveaux de hiérarchie. Pour conserver la hiérarchie,
-#' appeler lapply ou purr::map_chr à un niveau hiérarchique donné.
+#' Even if the list has several hierarchical levels, the
+#' returned value is always a string. To preserve a complex
+#' hierarchy, use lapply or purr::map_chr at a given
+#' hierarchical level.
 #'
-#' @param x une liste dont les éléments de plus bas niveau sont des
-#'   vecteurs atomiques.
-#' @param atom_sep séparateur des éléments atomiques.
-#' @param list_sep séparateur des éléments de la liste.
-#' @param simplify_threshold nombre d'éléments atomiques à partir duquel
-#'   la chaîne de caractères est simplifiée (premier et dernier éléments
-#'   séparés par un symbole, "->" par défaut).
-#' @param simplify_symbol chaîne de caractère, si la chaîne est simplifiée.
-#' @return Une chaîne de caractères, la représentation texte de la liste.
+#' @param x a list, whose lower level elements are atomic vectors.
+#' @param atom_sep separator for the elements of atomic vectors.
+#' @param list_sep separator for the elements of lists.
+#' @param simplify_threshold number of atomic elements from which
+#'   the character string is simplified (only first and last elements
+#'   separated by a symbol, "->" by default).
+#' @param simplify_symbol a symbol (one or several characters)
+#'   if the string has to be simplified.
+#' @return A string, the text representation of x.
 #' @examples
 #' list_to_chr(list(letters[1:2], 1:3, 4))
 #' list_to_chr(list(letters, LETTERS), simplify_threshold = 10)
@@ -56,16 +57,14 @@ list_to_chr <- function(x,
 }
 
 
-#' Simple list to character (for a data frame)
+#' List-columns to character (for a data frame)
 #'
-#' Convertit toutes les colonnes-listes d'un data.frame en vecteurs
-#' de chaînes de caractères.
+#' Convert all list-columns of a data frame into character vectors.
 #'
-#' @param df un data.frame contenant des colonnes-listes.
+#' @param df a data frame containing list-columns.
 #' @inheritParams list_to_chr
-#' @return Un data.frame, les colonnes simples (atomiques) restent
-#'   inchangées, les colonnes-listes (recursives) sont transformées
-#'   en vecteurs de chaînes de caractères.
+#' @return A data frame. Simple columns (atomic) remain the same,
+#'   list-columns (recursive) are transformed into character vectors.
 #' @examples
 #' df <- data.frame(x = 1:2)
 #' df$y <- list(letters[1:3], 1:2)
@@ -101,15 +100,14 @@ listcol_to_chr <- function(df,
 
 #' Separated character to list
 #'
-#' Convertit une chaîne de caractère en liste,
-#' selon des séparateurs définis.
+#' Convert a string into list, given separators.
 #'
-#' Si tous les éléments de la liste en sortie sont
-#' atomiques, la liste est simplifiée
+#' If all elements of the returned list are atomic,
+#' the list is simplified.
 #'
-#' @param chr chaîne de caractères à convertir.
+#' @param chr string to convert.
 #' @inheritParams list_to_chr
-#' @return Une liste (NULL si la chaîne est vide ou NA).
+#' @return A list (\code{NULL} if the string is empty or \code{NA}).
 #' @examples
 #' chr_to_list("1;2;3|a;b")
 #' chr_to_list("1;2;3")
@@ -140,12 +138,12 @@ chr_to_list <- function(chr,
 
 #' Separated character to list (for a data frame)
 #'
-#' Convertit une chaîne de caractère en liste,
-#'   selon des séparateurs définis.
+#' Convert some columns of a data frame into list-columns,
+#' given separators.
 #'
-#' @param df un data.frame contenant des colonnes à transformer en
-#'   colonnes-listes.
-#' @param vars colonnes à transformer (noms ou index)
+#' @param df a data frame containing columns to transform into
+#'   list-columns.
+#' @param vars columns to transform (vector of names or indexes)
 #' @inheritParams list_to_chr
 #' @examples
 #' df <-

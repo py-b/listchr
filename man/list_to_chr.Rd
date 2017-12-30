@@ -8,30 +8,31 @@ list_to_chr(x, atom_sep = ";", list_sep = "|", simplify_threshold = Inf,
   simplify_symbol = "->")
 }
 \arguments{
-\item{x}{une liste dont les éléments de plus bas niveau sont des
-vecteurs atomiques.}
+\item{x}{a list, whose lower level elements are atomic vectors.}
 
-\item{atom_sep}{séparateur des éléments atomiques.}
+\item{atom_sep}{separator for the elements of atomic vectors.}
 
-\item{list_sep}{séparateur des éléments de la liste.}
+\item{list_sep}{separator for the elements of lists.}
 
-\item{simplify_threshold}{nombre d'éléments atomiques à partir duquel
-la chaîne de caractères est simplifiée (premier et dernier éléments
-séparés par un symbole, "->" par défaut).}
+\item{simplify_threshold}{number of atomic elements from which
+the character string is simplified (only first and last elements
+separated by a symbol, "->" by default).}
 
-\item{simplify_symbol}{chaîne de caractère, si la chaîne est simplifiée.}
+\item{simplify_symbol}{a symbol (one or several characters)
+if the string has to be simplified.}
 }
 \value{
-Une chaîne de caractères, la représentation texte de la liste.
+A string, the text representation of x.
 }
 \description{
-Donne une représentation textuelle d'une liste dont les éléments
-de plus bas niveau sont des vecteurs atomiques.
+Returns a text representation of a list, whose lower level
+elements are atomic vectors.
 }
 \details{
-La valeur retournée est toujours une chaine, même si la liste
-a plusieurs niveaux de hiérarchie. Pour conserver la hiérarchie,
-appeler lapply ou purr::map_chr à un niveau hiérarchique donné.
+Even if the list has several hierarchical levels, the
+returned value is always a string. To preserve a complex
+hierarchy, use lapply or purr::map_chr at a given
+hierarchical level.
 }
 \examples{
 list_to_chr(list(letters[1:2], 1:3, 4))

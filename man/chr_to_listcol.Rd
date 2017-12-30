@@ -7,18 +7,18 @@
 chr_to_listcol(df, vars, atom_sep = ";", list_sep = "|")
 }
 \arguments{
-\item{df}{un data.frame contenant des colonnes à transformer en
-colonnes-listes.}
+\item{df}{a data frame containing columns to transform into
+list-columns.}
 
-\item{vars}{colonnes à transformer (noms ou index)}
+\item{vars}{columns to transform (vector of names or indexes)}
 
-\item{atom_sep}{séparateur des éléments atomiques.}
+\item{atom_sep}{separator for the elements of atomic vectors.}
 
-\item{list_sep}{séparateur des éléments de la liste.}
+\item{list_sep}{separator for the elements of lists.}
 }
 \description{
-Convertit une chaîne de caractère en liste,
-  selon des séparateurs définis.
+Convert some columns of a data frame into list-columns,
+given separators.
 }
 \examples{
 df <-
