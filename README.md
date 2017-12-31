@@ -3,7 +3,7 @@
 listchr
 =======
 
-The goal of *listchr* is to flatten list-columns of a data frame into strings, in order to export under a more simple format (csv, ...).
+The goal of *listchr* is to flatten list-columns of a data frame into strings, in order to export it to a more simple format (csv, ...).
 
 The reverse transformation (separated string to list) can also be done.
 
