@@ -66,12 +66,14 @@ chr_to_listcol <- function(df,
                            atom_sep = ";",
                            list_sep = "|") {
 
-  df %>%
-    dplyr::mutate_at(
-      vars,
+  df[vars] <-
+    lapply(
+      df[vars],
       chr_to_list,
-      atom_sep,
-      list_sep
+      atom_sep = atom_sep,
+      list_sep = list_sep
     )
+
+  df
 
 }

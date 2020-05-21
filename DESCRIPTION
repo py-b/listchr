@@ -14,7 +14,6 @@ Description:
     The reverse transformation (separated string to list) can
     also be done. 
 Depends: R (>= 3.3)
-Imports: dplyr (>= 0.7)
 Suggests: testthat
 URL: http://github.com/the-knife/listchr
 BugReports: http://github.com/the-knife/listchr/issues

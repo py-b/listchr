@@ -84,7 +84,6 @@ list_to_chr <- function(x,
 #' df$z <- list(list(3:4, 5:7), "d")
 #' listcol_to_chr(df)
 #' @export
-#' @importFrom dplyr "%>%"
 
 listcol_to_chr <- function(df,
                            atom_sep = ";",
@@ -92,12 +91,14 @@ listcol_to_chr <- function(df,
                            simplify_threshold = Inf,
                            simplify_sep = "->") {
 
-  df %>%
-    dplyr::mutate_if(
-    is.recursive,
-    function(lc) {
-      lc %>%
+  listcol <- vapply(df, is.recursive, logical(1))
+
+  df[listcol] <-
+    lapply(
+      df[listcol],
+      function(lc) {
         vapply(
+          lc,
           list_to_chr,
           FUN.VALUE = character(1),
           atom_sep = atom_sep,
@@ -105,7 +106,9 @@ listcol_to_chr <- function(df,
           simplify_threshold = simplify_threshold,
           simplify_sep = simplify_sep
         )
-    }
-  )
+      }
+    )
+
+  df
 
 }
