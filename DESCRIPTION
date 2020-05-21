@@ -15,8 +15,8 @@ Description:
     also be done. 
 Depends: R (>= 3.3)
 Suggests: testthat
-URL: http://github.com/the-knife/listchr
-BugReports: http://github.com/the-knife/listchr/issues
+URL: http://github.com/py-b/listchr
+BugReports: http://github.com/py-b/listchr/issues
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
