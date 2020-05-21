@@ -1,9 +1,9 @@
 Package: listchr
 Type: Package
-Title: List Columns to Character Conversion
+Title: List-Columns to Character Conversion
 Version: 0.1.0.9000
 Authors@R:
-    person(
+  person(
 	  "Pierre-Yves", "Berrard",
 	  email = "pierre.yves.berrard@gmail.com",
 	  role = c("aut", "cre")
