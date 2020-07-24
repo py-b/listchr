@@ -14,7 +14,7 @@ You can install *listchr* from github with :
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("the-knife/listchr")
+devtools::install_github("py-b/listchr")
 ```
 
 Example
